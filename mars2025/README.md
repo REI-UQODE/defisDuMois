@@ -20,6 +20,8 @@ Le Défi du Mois
 
 Le ***Défi du Mois*** est un défi de programmation compétitif dans lequel vous aurez à construire un programme qui répond à certains critères. Vous soumetterez votre solution et elle serat jugée selon divers critères et la meilleure solution sera courronnée gagnante du défi. Soumettez vos solution à <uqode@uqo.ca>.
 
+![Image promotionelle](./DéfiMars.svg)
+
 Les règles du jeu : 
 ----------------------
 
