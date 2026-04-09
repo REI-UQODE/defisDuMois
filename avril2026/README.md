@@ -26,41 +26,7 @@ Il peut sembler que la meilleure option pour le groupe est de collaborer, mais i
 
 Ce dilemme peut être formulé de diverses façons, dans le défi de ce mois-ci vous êtes des compétiteurs dans un jeu télévisé où vous pouvez trahir ou collaborer pour gagner plus ou moins d'argent. De plus, cette édition vous vois compétitionner à trois et sur 250 tours. À chaque tours, vous avez le choix de collaborer ou de trahir. Votre jeu est simulé contre chaque compétiteur, gagnant ou perdant quelques dollars dans chaque confrontations. Votre objectif est de gagner le plus d'argent possible sur les 250 tours.
 
-Comment participer : 
----------------------
-
-Téléchargez le défi d'Avril 2026 de ce répo. Vous y trouverez trois dossiers : `serveur_src`, `kit_démarrage_python` `kit_démarrage_java`. Cette architecture client-serveur vous permet d'utiliser le langage de programmation de votre choix, cependant pour faciliter l'utilisation, une base de fonctionnement vous est fournie en Python et en Java.
-
-Pour commencer, exécutez le serveur python situé dans `serveur_src`. Vous y trouverez la documentation nécessaire pour créer votre propre client si vous le souhaitez.
-
-Ensuite, si vous souhaitez utiliser Java, n'oubliez pas d'inclure la bibliothèque dans le dossier `kit_démarrage_java/lib` dans votre CLASSPATH pour le projet. Vous aurez à connecter trois instances pour lancer la partie.
-
-Finalement, lancez soit le client Java, soit le client Python. Dans tous les cas, vous n'aurez qu'à modifier le fichier `bot.py` ou `Bot.java`.
-
-Chaque tour, votre fonction aura accès à l'état du jeu, formulé comme ceci :
-
-```json
-{
-    "erreurs":[ // Liste des erreurs du serveur du dernier tours
-        "<message>",
-        "<message>",
-        ...
-    ],
-    "joueurs":[/*Liste des noms des joueurs*/],
-    "joueurs_info":{
-        "<nom_joueur>":{
-            "points":"<int>", // Points totaux du joueur
-            "points_obtenus":"<int>", // Points obtenus dans le dernier tour
-            "action":[true,false], // Action prise dans le dernier tour. True = A collaboré, False = A trahis
-        },
-        ...
-    }
-}
-```
-
-Et vous n'aurez qu'à répondre par vrai ou faux, vrai étant une collaboration et faux étant une trahison.
-
-Les règles du défi : 
+Les règles du défi :
 -----------------------
 
 Soumettez vos solutions à <uqode@uqo.ca>.
