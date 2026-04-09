@@ -43,27 +43,34 @@ class État:
 
 class ServeurHTTP(BaseHTTPRequestHandler):
     def do_GET(self):
+        # Analyse des paramètres
+        paramètres = {}
+        if '?' in self.path:
+            self.path, mots = self.path.split('?')
+            mots = mots.split('&')
+            for m in mots:
+                k,v = m.split('=')
+                paramètres[k] = v
+
         if self.path == "/connection":
             if len(État.joueurs) >= État.n_joueurs_attente:
                 self.send_response(400, "La partie est déjà débutée. Veuillez attendre une nouvelle partie.")
                 self.end_headers()
                 return
 
-            octets_contenu = self.headers.get("Content-Length")
-            if not octets_contenu:
-                self.send_response(400,"L'en-tête 'Content-Length' doit être spécifié.")
-                self.end_headers()
-                return
-            octets_contenu = int(octets_contenu)
-
-            nom : str = None
-            try:
-                nom = json.loads(self.rfile.read(octets_contenu))["nom"]
-            except Exception:
-                self.send_response(400,"Les données n'ont pas pus être analysées.")
+            if "nom" not in paramètres:
+                self.send_response(400,"Le paramètre 'nom' doit être spécifié dans l'url")
                 self.end_headers()
                 return
 
+            nom : str = paramètres["nom"]
+
+            for k in État.joueurs:
+                if État.joueurs[k]["nom"] == nom:
+                    self.send_response(400,"Le joueur est déjà inscrit.")
+                    self.end_headers()
+                    return
+            
             joueur_id = État.inscrire_joueur(nom)
 
             self.send_response(200)
@@ -77,6 +84,15 @@ class ServeurHTTP(BaseHTTPRequestHandler):
         self.end_headers()
     
     def do_POST(self):
+        # Analyse des paramètres
+        paramètres = {}
+        if '?' in self.path:
+            self.path, mots = self.path.split('?')
+            mots = mots.split('&')
+            for m in mots:
+                k,v = m.split('=')
+                paramètres[k] = v
+
         if self.path == "/tour":
             jeton : str = None
             try:

@@ -49,7 +49,7 @@ flowchart
             ...
         ],
         "joueurs":[/*Liste des noms des joueurs*/],
-        "joueurs_infos":{
+        "joueurs_info":{
             "<nom_joueur>":{
                 "points":"<int>", // Points totaux du joueur
                 "points_obtenus":"<int>", // Points obtenus dans le dernier tour
