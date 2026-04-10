@@ -8,7 +8,7 @@ Vous pouvez voir le classemement actuel [ici](./Soumissions.md)
 Le Défi du Mois
 ---------------
 
-Le ***Défi du Mois*** est un défi de programmation compétitif dans lequel vous aurez à construire un programme qui répond à certains critères. Vous soumetterez votre solution et elle serat jugée selon divers critères et la meilleure solution sera courronnée gagnante du défi. Soumettez vos solution à <uqode@uqo.ca>.
+Le ***Défi du Moi*** est un défi de programmation compétitif dans lequel vous aurez à construire un programme qui répond à certains critères. Vous soumettrez votre solution et elle sera jugée selon divers critères et la meilleure solution sera couronnée gagnante du défi. Soumettez vos solutions à <uqode@uqo.ca>.
 
 ![Image promotionelle](./DéfiAvril.svg)
 
@@ -24,7 +24,62 @@ Le dilemme du prisonnier est un problème célèbre en théorie des jeux. Deux p
 
 Il peut sembler que la meilleure option pour le groupe est de collaborer, mais individuellement il est toujours plus avantageux de trahir que de collaborer ([plus d'information ici](https://fr.wikipedia.org/wiki/Dilemme_du_prisonnier)).
 
-Ce dilemme peut être formulé de diverses façons, dans le défi de ce mois-ci vous êtes des compétiteurs dans un jeu télévisé où vous pouvez trahir ou collaborer pour gagner plus ou moins d'argent. De plus, cette édition vous vois compétitionner à trois et sur 250 tours. À chaque tours, vous avez le choix de collaborer ou de trahir. Votre jeu est simulé contre chaque compétiteur, gagnant ou perdant quelques dollars dans chaque confrontations. Votre objectif est de gagner le plus d'argent possible sur les 250 tours.
+Ce dilemme peut être formulé de diverses façons, dans le défi de ce mois-ci vous êtes des compétiteurs dans un jeu télévisé où vous pouvez trahir ou collaborer pour gagner plus ou moins d'argent. De plus, cette édition vous vois compétitionner à trois et sur 250 tours. À chaque tours, vous avez le choix de collaborer ou de trahir. Votre jeu est simulé contre chaque compétiteur, gagnant ou perdant quelques dollars dans chaque confrontations. Votre objectif est de gagner le plus d'argent possible sur les 250 tours. Votre matrice de décision est la suivante :
+
+|              | Faire Confiance | Trahir |
+|--------------|:---------------:|:------:|
+| Est Confiant | + 2$            | + 3$   |
+| Trahit       | + 0$            | + 1$   |
+
+-----------------------------------------------------------
+
+### Exemple :
+
+#### Tour 1
+
+| Joueur  | Action    | Gains       | Total |
+|:--------|:----------|:-----------:|:-----:|
+| Joueur1 | Trahit    | 3 + 1 = 4 $ | 4$    |
+| Joueur2 | Collabore | 0 + 0 = 0 $ | 0$    |
+| Joueur3 | Trahit    | 1 + 3 = 4 $ | 4$    |
+
+```mermaid
+stateDiagram-v2
+
+    Joueur1 --> Joueur2 : Trahit
+    Joueur1 --> Joueur3 : Trahit
+
+    Joueur2 --> Joueur1 : Collabore
+    Joueur2 --> Joueur3 : Collabore
+
+    Joueur3 --> Joueur2 : Trahit
+    Joueur3 --> Joueur1 : Trahit
+```
+
+#### Tour 2
+
+| Joueur  | Action    | Gains       | Total |
+|:--------|:----------|:-----------:|:-----:|
+| Joueur1 | Collabore | 0 + 2 = 2 $ | 6$    |
+| Joueur2 | Trahit    | 3 + 3 = 6 $ | 6$    |
+| Joueur3 | Collabore | 2 + 0 = 2 $ | 6$    |
+
+```mermaid
+stateDiagram-v2
+
+    Joueur1 --> Joueur2 : Collabore
+    Joueur1 --> Joueur3 : Collabore
+
+    Joueur2 --> Joueur1 : Trahit
+    Joueur2 --> Joueur3 : Trahit
+
+    Joueur3 --> Joueur2 : Collabore
+    Joueur3 --> Joueur1 : Collabore
+```
+
+### etc...
+
+-----------------------------------------------------------
 
 Les règles du défi :
 -----------------------
