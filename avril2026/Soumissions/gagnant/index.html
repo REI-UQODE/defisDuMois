@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Traitre.exe</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172026;
+      --muted: #66727c;
+      --line: #d7dde2;
+      --soft: #f3f6f8;
+      --paper: #ffffff;
+      --green: #1f8f5f;
+      --green-soft: #dff4ea;
+      --red: #b83246;
+      --red-soft: #f9dfe5;
+      --blue: #2764b0;
+      --blue-soft: #e3edf9;
+      --gold: #8d6516;
+      --gold-soft: #f6edcf;
+      --shadow: 0 14px 36px rgba(23, 32, 38, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(39, 100, 176, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #eef3f7 100%);
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0;
+    }
+
+    button,
+    select,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--ink);
+      cursor: pointer;
+      min-height: 42px;
+      padding: 0 14px;
+      transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+    }
+
+    button:hover {
+      border-color: #a8b4bf;
+      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.48;
+      transform: none;
+    }
+
+    select,
+    input[type="number"] {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 0 12px;
+      width: 100%;
+    }
+
+    .app {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 32px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 16px;
+      padding: 8px 0 20px;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.78);
+      padding: 0 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(270px, 320px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .controls,
+    .history-wrap {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow);
+    }
+
+    .controls {
+      padding: 16px;
+      display: grid;
+      gap: 16px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .field label,
+    .section-title {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 42px;
+    }
+
+    .segmented button {
+      border: 0;
+      border-radius: 0;
+      min-height: 42px;
+      background: transparent;
+    }
+
+    .segmented button.active {
+      background: var(--blue);
+      color: #ffffff;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .actions button {
+      min-height: 56px;
+      font-weight: 800;
+    }
+
+    .action-c {
+      background: var(--green-soft);
+      border-color: #9edbbb;
+      color: #12623f;
+    }
+
+    .action-d {
+      background: var(--red-soft);
+      border-color: #ec9aaa;
+      color: #842131;
+    }
+
+    .run-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .primary {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: #ffffff;
+    }
+
+    .scoreboard {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .player-card {
+      min-height: 150px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      align-content: space-between;
+      box-shadow: 0 10px 28px rgba(23, 32, 38, 0.08);
+    }
+
+    .player-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .player-name {
+      font-size: 18px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .player-kind {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .score {
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 850;
+    }
+
+    .delta {
+      min-width: 58px;
+      min-height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 10px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .last-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 30px;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 0 10px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .last-action.c {
+      background: var(--green-soft);
+      color: #12623f;
+    }
+
+    .last-action.d {
+      background: var(--red-soft);
+      color: #842131;
+    }
+
+    .last-action.none {
+      background: var(--soft);
+      color: var(--muted);
+    }
+
+    .history-wrap {
+      overflow: hidden;
+    }
+
+    .history-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: var(--paper);
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 11px 12px;
+      text-align: left;
+      vertical-align: middle;
+      overflow-wrap: anywhere;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      background: #f8fafb;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .empty {
+      padding: 36px 16px;
+      color: var(--muted);
+      text-align: center;
+      background: var(--paper);
+    }
+
+    .result {
+      min-height: 38px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      line-height: 1.3;
+    }
+
+    @media (max-width: 880px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        position: static;
+      }
+
+      .scoreboard {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .app {
+        width: min(100% - 20px, 1180px);
+        padding-top: 14px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      .meta {
+        justify-content: flex-start;
+      }
+
+      .grid-two,
+      .run-row,
+      .actions {
+        grid-template-columns: 1fr;
+      }
+      table {
+        min-width: 640px;
+      }
+
+      .history-wrap {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="meta">
+        <div class="pill" id="round-pill">Tour 1 / 250</div>
+        <div class="pill" id="leader-pill">En attente</div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="controls">
+        <div class="field">
+          <span class="section-title">Mode</span>
+          <div class="segmented" role="group" aria-label="Mode">
+            <button id="mode-sim" class="active" type="button">Simulation</button>
+            <button id="mode-play" type="button">Jouer</button>
+          </div>
+        </div>
+
+        <div class="grid-two">
+          <div class="field">
+            <label for="opponent-a">Joueur 2</label>
+            <select id="opponent-a">
+              <option value="donnant-donnant">Donnant-donnant</option>
+              <option value="rancunier">Rancunier</option>
+              <option value="cooperateur">Cooperateur</option>
+              <option value="mefiant">Mefiant</option>
+              <option value="aleatoire">Aleatoire</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="opponent-b">Joueur 3</label>
+            <select id="opponent-b">
+              <option value="rancunier">Rancunier</option>
+              <option value="donnant-donnant">Donnant-donnant</option>
+              <option value="cooperateur">Cooperateur</option>
+              <option value="mefiant">Mefiant</option>
+              <option value="aleatoire">Aleatoire</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="rounds">Tours</label>
+          <input id="rounds" type="number" min="1" max="1000" value="250">
+        </div>
+
+        <div class="actions" id="human-actions" hidden>
+          <button class="action-c" id="play-c" type="button">Collaborer</button>
+          <button class="action-d" id="play-d" type="button">Trahir</button>
+        </div>
+
+        <div class="run-row">
+          <button class="primary" id="next-round" type="button">Prochain tour</button>
+          <button id="auto-run" type="button">Auto</button>
+        </div>
+        <button id="reset" type="button">Reinitialiser</button>
+
+        <div class="result" id="status">Pret.</div>
+      </aside>
+
+      <section>
+        <div class="scoreboard" id="scoreboard"></div>
+
+        <div class="history-wrap">
+          <div class="history-head">
+            <span class="section-title">Historique</span>
+            <span class="pill" id="history-count">0 tour</span>
+          </div>
+          <div id="history"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const COLLABORATE = "collaborer";
+    const BETRAY = "trahir";
+    const OUR_NAME = "Traitre.exe";
+    const payoff = {
+      "collaborer|collaborer": 2,
+      "collaborer|trahir": 0,
+      "trahir|collaborer": 3,
+      "trahir|trahir": 1
+    };
+    const strategyLabels = {
+      "traitre": "Traitre.exe",
+      "donnant-donnant": "Donnant-donnant",
+      "rancunier": "Rancunier",
+      "cooperateur": "Cooperateur",
+      "mefiant": "Mefiant",
+      "aleatoire": "Aleatoire"
+    };
+
+    const state = {
+      mode: "simulation",
+      totalRounds: 250,
+      players: [],
+      strategies: {},
+      totals: {},
+      lastScores: {},
+      history: [],
+      autoTimer: null,
+      rngSeed: 2026
+    };
+
+    const elements = {
+      scoreboard: document.getElementById("scoreboard"),
+      history: document.getElementById("history"),
+      roundPill: document.getElementById("round-pill"),
+      leaderPill: document.getElementById("leader-pill"),
+      historyCount: document.getElementById("history-count"),
+      status: document.getElementById("status"),
+      modeSim: document.getElementById("mode-sim"),
+      modePlay: document.getElementById("mode-play"),
+      opponentA: document.getElementById("opponent-a"),
+      opponentB: document.getElementById("opponent-b"),
+      rounds: document.getElementById("rounds"),
+      humanActions: document.getElementById("human-actions"),
+      playC: document.getElementById("play-c"),
+      playD: document.getElementById("play-d"),
+      nextRound: document.getElementById("next-round"),
+      autoRun: document.getElementById("auto-run"),
+      reset: document.getElementById("reset")
+    };
+
+    function normalizeName(name, used) {
+      let candidate = name;
+      let index = 2;
+      while (used.has(candidate)) {
+        candidate = `${name}-${index}`;
+        index += 1;
+      }
+      used.add(candidate);
+      return candidate;
+    }
+
+    function configureGame() {
+      stopAuto();
+      state.totalRounds = clamp(Number(elements.rounds.value) || 250, 1, 1000);
+      elements.rounds.value = String(state.totalRounds);
+      state.history = [];
+      state.totals = {};
+      state.lastScores = {};
+      state.rngSeed = 2026;
+
+      const used = new Set();
+      if (state.mode === "simulation") {
+        const names = [
+          normalizeName(OUR_NAME, used),
+          normalizeName(strategyLabels[elements.opponentA.value], used),
+          normalizeName(strategyLabels[elements.opponentB.value], used)
+        ];
+        state.players = names;
+        state.strategies = {
+          [names[0]]: "traitre",
+          [names[1]]: elements.opponentA.value,
+          [names[2]]: elements.opponentB.value
+        };
+      } else {
+        const names = [
+          normalizeName("Vous", used),
+          normalizeName(OUR_NAME, used),
+          normalizeName(strategyLabels[elements.opponentA.value], used)
+        ];
+        state.players = names;
+        state.strategies = {
+          [names[0]]: "humain",
+          [names[1]]: "traitre",
+          [names[2]]: elements.opponentA.value
+        };
+      }
+
+      for (const player of state.players) {
+        state.totals[player] = 0;
+        state.lastScores[player] = 0;
+      }
+      render();
+    }
+
+    function clamp(value, min, max) {
+      return Math.max(min, Math.min(max, value));
+    }
+
+    function decideFor(player, humanAction) {
+      const strategy = state.strategies[player];
+      const gameState = {
+        players: state.players,
+        selfName: player,
+        totalRounds: state.totalRounds,
+        history: state.history
+      };
+      if (strategy === "humain") {
+        return humanAction || COLLABORATE;
+      }
+      if (strategy === "traitre") {
+        return decideTraitre(gameState);
+      }
+      if (strategy === "cooperateur") {
+        return COLLABORATE;
+      }
+      if (strategy === "mefiant") {
+        return BETRAY;
+      }
+      if (strategy === "donnant-donnant") {
+        return decideTitForTat(gameState);
+      }
+      if (strategy === "rancunier") {
+        return decideGrudger(gameState);
+      }
+      return seededRandom() < 0.5 ? BETRAY : COLLABORATE;
+    }
+
+    function decideTraitre(gameState) {
+      const roundNumber = gameState.history.length + 1;
+      const opponents = gameState.players.filter((player) => player !== gameState.selfName);
+      if (roundNumber > Math.max(1, gameState.totalRounds - 8)) {
+        return BETRAY;
+      }
+      if (gameState.history.length === 0) {
+        return COLLABORATE;
+      }
+
+      const recent = gameState.history.slice(-4);
+      const lastRound = gameState.history[gameState.history.length - 1].actions;
+      const stats = Object.fromEntries(opponents.map((opponent) => [opponent, statsFor(opponent, gameState.history)]));
+      const recentBetrayals = recent.reduce((count, turn) => {
+        return count + opponents.filter((opponent) => turn.actions[opponent] === BETRAY).length;
+      }, 0);
+      const lastBetrayers = opponents.filter((opponent) => lastRound[opponent] === BETRAY);
+
+      if (opponents.every((opponent) => stats[opponent].betrayRate >= 0.55 && stats[opponent].rounds >= 8)) {
+        return BETRAY;
+      }
+
+      if (lastBetrayers.length > 0) {
+        if (lastBetrayers.length === 1) {
+          const culprit = lastBetrayers[0];
+          if (stats[culprit].betrayRate <= 0.18 && recentBetrayals === 1) {
+            return COLLABORATE;
+          }
+        }
+        return BETRAY;
+      }
+
+      if ([37, 89, 151, 211].includes(roundNumber) && recentBetrayals === 0) {
+        return BETRAY;
+      }
+
+      if (recentBetrayals === 0) {
+        return COLLABORATE;
+      }
+
+      if (gameState.history.length >= 2) {
+        const previousTwo = gameState.history.slice(-2);
+        const peaceful = previousTwo.every((turn) => opponents.every((opponent) => turn.actions[opponent] === COLLABORATE));
+        if (peaceful) {
+          return COLLABORATE;
+        }
+      }
+
+      return BETRAY;
+    }
+
+    function statsFor(player, history) {
+      const actions = history.map((turn) => turn.actions[player]).filter(Boolean);
+      const betrayals = actions.filter((action) => action === BETRAY).length;
+      return {
+        rounds: actions.length,
+        betrayals,
+        betrayRate: actions.length ? betrayals / actions.length : 0
+      };
+    }
+
+    function decideTitForTat(gameState) {
+      if (gameState.history.length === 0) {
+        return COLLABORATE;
+      }
+      const lastRound = gameState.history[gameState.history.length - 1].actions;
+      const opponents = gameState.players.filter((player) => player !== gameState.selfName);
+      return opponents.some((opponent) => lastRound[opponent] === BETRAY) ? BETRAY : COLLABORATE;
+    }
+
+    function decideGrudger(gameState) {
+      const opponents = gameState.players.filter((player) => player !== gameState.selfName);
+      return gameState.history.some((turn) => opponents.some((opponent) => turn.actions[opponent] === BETRAY))
+        ? BETRAY
+        : COLLABORATE;
+    }
+
+    function seededRandom() {
+      state.rngSeed = (state.rngSeed * 1664525 + 1013904223) >>> 0;
+      return state.rngSeed / 4294967296;
+    }
+
+    function playRound(humanAction) {
+      if (state.history.length >= state.totalRounds) {
+        stopAuto();
+        renderStatus("Partie terminee.");
+        return;
+      }
+
+      const actions = {};
+      for (const player of state.players) {
+        actions[player] = decideFor(player, humanAction);
+      }
+
+      const scores = scoreRound(actions);
+      for (const player of state.players) {
+        state.totals[player] += scores[player];
+        state.lastScores[player] = scores[player];
+      }
+      state.history.push({ actions, scores });
+      render();
+    }
+
+    function scoreRound(actions) {
+      const scores = Object.fromEntries(state.players.map((player) => [player, 0]));
+      for (let i = 0; i < state.players.length; i += 1) {
+        for (let j = i + 1; j < state.players.length; j += 1) {
+          const player = state.players[i];
+          const opponent = state.players[j];
+          scores[player] += payoff[`${actions[player]}|${actions[opponent]}`];
+          scores[opponent] += payoff[`${actions[opponent]}|${actions[player]}`];
+        }
+      }
+      return scores;
+    }
+
+    function render() {
+      const roundNumber = Math.min(state.history.length + 1, state.totalRounds);
+      elements.roundPill.textContent = `Tour ${roundNumber} / ${state.totalRounds}`;
+      elements.historyCount.textContent = `${state.history.length} ${state.history.length > 1 ? "tours" : "tour"}`;
+      elements.humanActions.hidden = state.mode !== "jouer";
+      elements.nextRound.hidden = state.mode === "jouer";
+      elements.modeSim.classList.toggle("active", state.mode === "simulation");
+      elements.modePlay.classList.toggle("active", state.mode === "jouer");
+      elements.opponentB.disabled = state.mode === "jouer";
+
+      renderScoreboard();
+      renderHistory();
+      renderLeader();
+
+      const finished = state.history.length >= state.totalRounds;
+      elements.autoRun.disabled = finished || state.mode === "jouer";
+      elements.nextRound.disabled = finished || state.mode === "jouer";
+      elements.playC.disabled = finished || state.mode !== "jouer";
+      elements.playD.disabled = finished || state.mode !== "jouer";
+
+      if (finished) {
+        renderStatus("Partie terminee.");
+      } else if (state.mode === "jouer") {
+        renderStatus("A vous.");
+      } else if (!state.autoTimer) {
+        renderStatus("Pret.");
+      }
+    }
+
+    function renderScoreboard() {
+      const latest = state.history[state.history.length - 1];
+      elements.scoreboard.innerHTML = state.players.map((player, index) => {
+        const action = latest ? latest.actions[player] : "";
+        const actionClass = action === COLLABORATE ? "c" : action === BETRAY ? "d" : "none";
+        const actionText = action ? labelAction(action) : "Aucun coup";
+        const kind = playerDetails(player);
+        return `
+          <article class="player-card">
+            <div class="player-head">
+              <div>
+                <div class="player-name">Joueur ${index + 1}</div>
+                <div class="player-kind">${escapeHtml(kind)}</div>
+              </div>
+              <span class="delta">+${state.lastScores[player] || 0}$</span>
+            </div>
+            <div class="score">${state.totals[player]}$</div>
+            <span class="last-action ${actionClass}">${actionText}</span>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderHistory() {
+      if (state.history.length === 0) {
+        elements.history.innerHTML = `<div class="empty">Aucun tour joue.</div>`;
+        return;
+      }
+      const rows = state.history.slice(-12).map((turn, index, turns) => {
+        const round = state.history.length - turns.length + index + 1;
+        return `
+          <tr>
+            <td>${round}</td>
+            ${state.players.map((player) => `
+              <td>
+                <strong>${labelAction(turn.actions[player])}</strong>
+                <span class="pill">+${turn.scores[player]}$</span>
+              </td>
+            `).join("")}
+          </tr>
+        `;
+      }).reverse().join("");
+
+      elements.history.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Tour</th>
+              ${state.players.map((player, index) => `<th>Joueur ${index + 1}<br><span class="player-kind">${escapeHtml(playerDetails(player))}</span></th>`).join("")}
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    function renderLeader() {
+      const leaders = [...state.players].sort((a, b) => state.totals[b] - state.totals[a]);
+      const leader = leaders[0];
+      const leaderIndex = state.players.indexOf(leader) + 1;
+      elements.leaderPill.textContent = state.history.length ? `Joueur ${leaderIndex}: ${state.totals[leader]}$` : "En attente";
+    }
+
+    function renderStatus(text) {
+      elements.status.textContent = text;
+    }
+
+    function labelAction(action) {
+      return action === COLLABORATE ? "Collaborer" : "Trahir";
+    }
+
+    function playerDetails(player) {
+      if (state.strategies[player] === "humain") {
+        return "Vous - Humain";
+      }
+      return player === OUR_NAME ? OUR_NAME : strategyLabels[state.strategies[player]];
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function stopAuto() {
+      if (state.autoTimer) {
+        window.clearInterval(state.autoTimer);
+        state.autoTimer = null;
+      }
+      elements.autoRun.textContent = "Auto";
+    }
+
+    elements.modeSim.addEventListener("click", () => {
+      state.mode = "simulation";
+      configureGame();
+    });
+
+    elements.modePlay.addEventListener("click", () => {
+      state.mode = "jouer";
+      configureGame();
+    });
+
+    elements.opponentA.addEventListener("change", configureGame);
+    elements.opponentB.addEventListener("change", configureGame);
+    elements.rounds.addEventListener("change", configureGame);
+    elements.reset.addEventListener("click", configureGame);
+    elements.nextRound.addEventListener("click", () => playRound());
+    elements.playC.addEventListener("click", () => playRound(COLLABORATE));
+    elements.playD.addEventListener("click", () => playRound(BETRAY));
+    elements.autoRun.addEventListener("click", () => {
+      if (state.autoTimer) {
+        stopAuto();
+        renderStatus("Pause.");
+        return;
+      }
+      elements.autoRun.textContent = "Pause";
+      renderStatus("Simulation en cours.");
+      state.autoTimer = window.setInterval(() => {
+        playRound();
+        if (state.history.length >= state.totalRounds) {
+          stopAuto();
+        }
+      }, 90);
+    });
+
+    configureGame();
+  </script>
+</body>
+</html>
