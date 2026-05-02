@@ -1,0 +1,52 @@
+{
+  "test_suite": "JSON_EXTREME_STRESS_002",
+  "numeric_edge_cases": {
+    "large_integer": 9223372036854775807,
+    "scientific_notation": 1.23456789e-10,
+    "negative_precision": -0.0000000000000001,
+    "zero_variants": [0, -0, 0.0, 0.000]
+  },
+  "encoding_hell": {
+    "unicode_emojis": "🚀🛸🌠",
+    "escaped_chars": "Tab\tNewline\nBackslash\\\\Slash\/Quotes\" ",
+    "multilingual": "UTF-8!",
+    "control_codes": "\u0000\u001f"
+  },
+  "deep_nesting": {
+    "level_1": {
+      "level_2": {
+        "level_3": {
+          "level_4": {
+            "level_5": {
+              "empty_at_bottom": {},
+              "list_at_bottom": [
+                [[[[[42]]]]]
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "complex_array_structure": [
+    {
+      "type": "geometry",
+      "coordinates": [
+        [[[10.1, 20.2], [30.3, 40.4]], [[50.5, 60.6], [70.7, 80.8]]],
+        [[[1.1, 2.2], [3.3, 4.4]], [[5.5, 6.6], [7.7, 8.8]]]
+      ]
+    },
+    null,
+    false,
+    "String after null/bool",
+    {
+      "nested_empty": [[], [[]], {"key": []}]
+    }
+  ],
+  "schema_metadata": {
+    "id_string": "7f8e9a0b-1c2d-3e4f-5a6b-7c8d9e0f1a2b",
+    "trailing_space_test": "Value with spaces at end    ",
+    "key_with.dots.and_underscores": 100,
+    "key with spaces": "valid"
+  }
+}

@@ -25,6 +25,8 @@ Une bonne manière de marquer des points est d'avoir un parseur rapide et effica
 
 Votre soumission sera testée avec plusieurs fichiers JSON, dont quelques uns sont disponibles [ici](./exemples). Nous vous recommandons fortement de tester votre programme avec nos exemples avant de soumettre.
 
+*PS: Le fichier `je-cherche-le-trouble.json` est optionnel, mais ajoute des points à votre soumission.*
+
 Durée du défi
 -------------
 

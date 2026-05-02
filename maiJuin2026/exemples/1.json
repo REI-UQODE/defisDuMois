@@ -1,0 +1,119 @@
+{
+	"desserts":
+	[
+		{
+			"plat": "tarte",
+			"types":
+			[
+				{
+					"type": "bleuets",
+					"cuisson": 350,
+					"duree": 3
+				},
+				{
+					"type": "pommes",
+					"cuisson": 400,
+					"duree": 3.5
+				},
+				{
+					"type": "érable",
+					"cuisson": 350,
+					"duree": 2.5
+				}
+			]
+		},
+		{
+			"plat": "muffin",
+			"types":
+			[
+				{
+					"type": "bleuets",
+					"cuisson": 350,
+					"duree": 1
+				},
+				{
+					"type": "carottes",
+					"cuisson": 375,
+					"duree": 1
+				}
+			]
+		},
+		{
+			"plat": "biscuit",
+			"types":
+			[
+				{
+					"type": "pépites de chocolat",
+					"cuisson": 300,
+					"duree": 0.75
+				},
+				{
+					"type": "gingembre",
+					"cuisson": 350,
+					"duree": 0.75
+				}
+			]
+		}
+	],
+	
+	"repas":
+	[
+		{
+			"plat": "ragoût",
+			"types":
+			[
+				{
+					"type": "gibier",
+					"cuisson": "feu doux",
+					"duree": 6.5
+				},
+				{
+					"type": "boulettes",
+					"cuisson": "feu doux",
+					"duree": 1.25
+				}
+			]
+		},
+		{
+			"plat": "pâtes",
+			"types":
+			[
+				{
+					"type": "spaghettis",
+					"cuisson": "bouillir",
+					"duree": 3
+				},
+				{
+					"type": "raviolis",
+					"cuisson": "bouillir",
+					"duree": 0.20
+				},
+				{
+					"type": "cannelonis",
+					"cuisson": 350,
+					"duree": 0.75
+				}
+			]
+		}
+	],
+	
+	"accompagnements":
+	[
+		{
+			"plat": "salade",
+			"types":
+			[
+				{
+					"type": "grecque",
+					"cuisson": 0,
+					"duree": 0.10
+				},
+				{
+					"type": "César",
+					"cuisson": 0,
+					"duree": 0.10
+				}
+			]
+		}
+	]
+}

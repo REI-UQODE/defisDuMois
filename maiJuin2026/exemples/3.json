@@ -1,0 +1,406 @@
+{
+  "metadata": {
+    "project_id": "ASTRO-99-ALPHA",
+    "version": 1.05,
+    "is_active": true,
+    "tags": ["space", "nebula", "exploration", null],
+    "coordinates": {
+      "sector": "Sector-7G",
+      "quadrant": "Delta",
+      "position": {
+        "x": 124.552,
+        "y": -98.001,
+        "z": 0.0
+      }
+    }
+  },
+  "observations": [
+    {
+      "id": 1,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"C\"."
+    },
+    {
+      "id": 4,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 5,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"Z\"."
+    },
+    {
+      "id": 6,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 7,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 8,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 9,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"A\"."
+    },
+    {
+      "id": 10,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 11,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 12,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 13,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"124\"."
+    },
+    {
+      "id": 14,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 15,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 16,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 17,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"ALLO\"."
+    },
+    {
+      "id": 18,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 19,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 20,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 21,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"Bonjour\"."
+    },
+    {
+      "id": 22,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 23,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 24,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 25,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 26,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 27,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 28,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 29,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 30,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 31,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"B\"."
+    },
+    {
+      "id": 32,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    },
+    {
+      "id": 33,
+      "timestamp": "2026-05-01T20:22:54Z",
+      "target": "Crab Nebula",
+      "magnitude": 8.4,
+      "sensors_active": [true, true, false],
+      "data_points": [
+        [1.2, 3.4, 5.6],
+        [7.8, 9.0, 1.2],
+        []
+      ],
+      "notes": "Signal intermittent. Vérifier le câblage de l'antenne \"Bateau\"."
+    },
+    {
+      "id":34,
+      "timestamp": "2026-05-02T10:15:00Z",
+      "target": "Exoplanet Kepler-186f",
+      "magnitude": 14.2,
+      "sensors_active": [true, false, false],
+      "data_points": [],
+      "notes": null
+    }
+  ],
+  "system_logs": {
+    "errors": [],
+    "warnings": [
+      "Température critique détectée : 45\u00b0C",
+      "Latence réseau de 150ms"
+    ],
+    "diagnostic": {
+      "cpu_usage": "22%",
+      "memory_bytes": 1073741824,
+      "uptime_seconds": 86400
+    }
+  },
+  "checksum": "f2a3b4c5d6e7f8a9"
+}
