@@ -14,6 +14,8 @@ Le premier défi de l'été 2026 sera un parseur JSON!
 
 Vous pouvez voir le classement actuel [ici](./Soumissions.md)
 
+![graphique promotionnel](./graphique.png)
+
 Les règles d'évaluation
 -----------------------
 
