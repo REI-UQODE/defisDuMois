@@ -40,7 +40,7 @@ Durée du défi
 
 Exceptionnellement, les défis de l'été 2026 auront une **durée de 2 mois** plutôt qu'un seul.
 
-**La date limite pour soumettre est le 28 juin 2026 à 12h00 (midi).**
+**La date limite pour soumettre est le 30 Août 2026 à 12h00 (midi).**
 
 Les Défis du Mois
 -----------------
