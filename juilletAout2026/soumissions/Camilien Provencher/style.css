@@ -1,0 +1,48 @@
+#preview {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+  white-space: pre-wrap; /* j'en ai besoin pour garder les saut de lignes */
+}
+
+body {
+  margin: 0;
+  height: 100ch;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+button {
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 0;
+}
+
+.editor,
+.preview {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+#editor,
+#preview {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}

@@ -1,0 +1,36 @@
+<!-- Par Camilien, pour le défi du mois d'été Markdown :-) -->
+<!-- J'ai utilisé l'addon prettier pour que le code soit mieux organisé -->
+
+<!doctype html>
+<html>
+  <head>
+    <title>Markdown, par Cami</title>
+    <!-- Visuel, honnêtement seulement la partie white-space: pre-wrap est importante -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Markdown, par Cami</h1>
+      <div class="boutons">
+        <button id="load">Load</button>
+      </div>
+    </header>
+    <main>
+      <!-- On écrit dans l'éditeur le texte pur -->
+      <section class="editor">
+        <h2>Editeur</h2>
+        <textarea
+          id="editor"
+          placeholder="Écrivez votre Markdown ici. Pour une reference, chargez le fichier de test!"
+        ></textarea>
+      </section>
+      <!-- Le markdown s'affiche ici -->
+      <section class="preview">
+        <h2>Preview</h2>
+        <div id="preview"></div>
+      </section>
+    </main>
+    <!-- Logique -->
+    <script src="script.js"></script>
+  </body>
+</html>
