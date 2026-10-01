@@ -1,7 +1,7 @@
 Défi de Septembre 2026
 ======================
 
-![Apperçu]()
+![Image Promotionnelle](./promo.png)
 
 Le de Septembre 2026 est un **Jeu de Sudoku**!
 
