@@ -1,9 +1,9 @@
-Défi d'Octobre 2026
+Défi d'Octobre-Novembre 2026
 ======================
 
-![Image Promotionnelle](./promo.png)
+![Image Promotionnelle](./promo.webp)
 
-Le défis d'Octobre 2026, **Premier**, est simple : vous avez 1 seconde pour imprimer le plus gros nombre premier possible!
+Le défis d'Octobre-Novembre 2026, **Premier**, est simple : vous avez 1 seconde pour imprimer le plus gros nombre premier possible!
 
 Vous pouvez voir le classement actuel [ici](./Soumissions.md)
 
@@ -16,16 +16,31 @@ Le défi consiste à calculer le plus gros nombre premier que vous êtes capable
 
 Il est interdit de précalculer un nombre premier ou n'importe quelle étape intermédiaire de votre algorithme.
 
-Vous devrez soumettre un code, ainsi qu'un fichier exécutable linux `lancer` qui servira à lancer votre programme.
+Vous devrez soumettre un code, ainsi qu'un fichier exécutable linux `lancer` qui servira à lancer votre programme. Votre code sera exécuté sur une machine ubuntu 26.04 sur laquelle les langages de programmations suivants sont installés :
 
-Soumettez votre solution sur https://rei-uqode.ca/pages/defis-oct2026.html
+- Python 3.14
+- Java 25.0
+- NodeJS 22.22.1
+- DotNet 10.0
+- PHP 8.5
+
+Pour tout langage compilé (C, C++, Rust, Go), veuillez fournir un fichier binaire exécutable x64. De plus, votre programme n'aura aucun accès internet, donc toute dépendance doit être incluse dans le fichier. Veuillez contacter <uqode@uqo.ca> pour demander un autre langage de programmation.
+
+Soumettez votre solution sur https://rei-uqode.ca/pages/defi-oct2026.html
+Votre soumission doit être dans le format suivant : 
+```
+*.zip
+|
++-- lancer <= fichier exécutable
++-- ...    <= autres fichiers au besoin
+```
 
 Que le meilleur gagne!
 
 Durée du défi
 -------------
 
-Vous aurez du **1er au 31 octobre** pour participer au défi. Bonne chance!
+Vous aurez du **14 octobre au 30 novembre** pour participer au défi. Bonne chance!
 
 Les Défis du Mois
 -----------------
